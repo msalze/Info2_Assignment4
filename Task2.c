@@ -1,3 +1,5 @@
+/*Melanie Salzer, 16-922-593*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -52,24 +54,20 @@ void enQueue(struct Queue *q, int key){
 }
 
 int deQueue(struct Queue *q){
-	if (isEmpty(q->stack1)==-1){return -1;}
-	struct node * p = q->stack1;
-	struct node * r = q->stack2;
-	while (p->next != NULL){
-		int key = p->key;
-		printf("%d\n",key);
-		push(&(q->stack2),key);
-		p=p->next;
-		printStack(q->stack2);
-	}
-	p=p->next;
-	int key = p->key;
-	push(&(q->stack2),key);
-	int val = pop(&(q->stack2));
-	while (q->stack2 !=NULL){
-		pop(q->stack2);
-	}
-	return val;
+    if(isEmpty(q->stack1) == -1){return -1;}
+    int t = 0;
+    while(isEmpty(q->stack1) == 1){
+	t = pop(&(q->stack1));
+	push(&(q->stack2), t);
+    }
+
+    int val = pop(&(q->stack2));
+    while(isEmpty(q->stack2) == 1){
+	t = pop(&(q->stack2));
+	push(&(q->stack1), t);
+    }
+    
+    return val;
 }
 
 void printQueue(struct Queue *q){
@@ -84,9 +82,15 @@ int main(){
 	enQueue(q,8);
 	enQueue(q,11);
 	enQueue(q,15);
-	deQueue(q);
-	/*deQueue(q);*/
+	int val = deQueue(q);
+	printf("%d\n", val);
+	val = deQueue(q);
+	printf("%d\n", val);
+	enQueue(q,1);
+	enQueue(q,5);
+	printQueue(q);
 	
+	return 0;
 }
 
 
