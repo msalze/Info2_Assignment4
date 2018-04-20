@@ -1,3 +1,5 @@
+/*Melanie Salzer, 16-922-593*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -216,25 +218,28 @@ int main(){
 	insert(root,7);
 	insert(root,9);
 	print(*root);
-	/*
+	printf("\n");
 	struct TreeNode * max = maximum(*root);
-	printf("max = %d", max->val);
-    struct TreeNode * suc = successor(*root, max );
+	printf("max = %d\n", max->val);
+	
+	struct TreeNode * min = minimum(*root);
+	printf("min = %d\n", min->val);
+	
+	int val_successor = 4;
+	struct TreeNode * suc_1 = search(*root,4);
+    struct TreeNode * suc = successor(*root,suc_1);
+    printf("successor of %d is %d\n", val_successor, suc->val);
     
-    struct TreeNode * ith = ith_smallest(*root,5);
-    printf("%d", ith->val);
-	return 0;*/
-	int i = distance(*root,3,9);
-	printf("distance = %d",i);
+    int i = 5;
+    struct TreeNode * ith = ith_smallest(*root,i);
+    printf("%d-th smallest is %d\n", i,ith->val);
+	
+	int x = 3;
+	int y = 9;
+	int d = distance(*root,x,y);
+	printf("distance between %d and %d is %d",x,y,d);
+	
+	return 0;
 }
-
-
-
-
-
-
-
-
-
 
 
