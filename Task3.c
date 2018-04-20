@@ -1,3 +1,5 @@
+/*Melanie Salzer, 16-922-593*/
+
 #include <stdio.h>
 #include <stdlib.h>
 
